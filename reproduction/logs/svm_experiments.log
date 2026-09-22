@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/Users/jingyuan/Documents/ChatGPT/模型构建/reproduction/src/models.py", line 87, in <module>
+    if a.svm_experiments:svm_experiments()
+                         ^^^^^^^^^^^^^^^^^
+  File "/Users/jingyuan/Documents/ChatGPT/模型构建/reproduction/src/models.py", line 68, in svm_experiments
+    recomputed=np.load(RESULT/'esm2_embeddings_recomputed.npy');keep=np.load(RESULT/'cleanlab_keep_mask.npy')
+                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jingyuan/Documents/ChatGPT/模型构建/.venv/lib/python3.12/site-packages/numpy/lib/npyio.py", line 427, in load
+    fid = stack.enter_context(open(os_fspath(file), "rb"))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/jingyuan/Documents/ChatGPT/模型构建/reproduction/results/cleanlab_keep_mask.npy'

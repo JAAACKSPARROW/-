@@ -1,0 +1,30 @@
+--- ESM_embedding_task-320.ipynb cell 0 original
+
++++ path repaired
+
+@@ -1,2 +1,2 @@
+
+ import os
+
+-os.chdir('C:/Users/RH/A_jiaoyuan/model/embedding_results')
++os.chdir('/Users/jingyuan/Documents/ChatGPT/模型构建/reproduction/results/original_notebook_outputs')
+--- ESM_embedding_task-320.ipynb cell 3 original
+
++++ path repaired
+
+@@ -1,5 +1,3 @@
+
+-#training dataset loading
+
+-#打开指定路径的excel文件
+
+-excel_path = r'C:\Users\RH\A_jiaoyuan\database\your_file_name.xlsx'
+
+-dataset = pd.read_excel(excel_path, na_filter=False)
+
+-sequence_list = dataset['Sequence']
++import pandas as pd
+
++dataset=pd.read_excel('/Users/jingyuan/Documents/ChatGPT/模型构建/skinaging_predictor_ZJU/Database/Oringinal_data.xlsx', na_filter=False)
+
++sequence_list=dataset['Sequence']

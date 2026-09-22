@@ -1,0 +1,12 @@
+       dataset  seed  train_size  test_size  exact_duplicate_pairs  pairs_gt_08  pairs_gt_09  test_sequences_gt_08  test_sequences_gt_09  maximum_similarity
+author_cleaned  2001         271         68                      0           24            1                    14                     1            0.909091
+author_cleaned     0         271         68                      0           31            1                    14                     1            0.909091
+author_cleaned     1         271         68                      0           30            2                    17                     1            0.909091
+author_cleaned     2         271         68                      0           27            0                    16                     0            0.888889
+author_cleaned     3         271         68                      0           39            0                    17                     0            0.900000
+author_cleaned     4         271         68                      0           26            0                    15                     0            0.875000
+author_cleaned     5         271         68                      0           29            1                    15                     1            0.909091
+author_cleaned     6         271         68                      0           29            1                    14                     1            0.909091
+author_cleaned     7         271         68                      0           30            0                    14                     0            0.900000
+author_cleaned     8         271         68                      0           25            0                    12                     0            0.900000
+author_cleaned     9         271         68                      0           36            0                    16                     0            0.888889

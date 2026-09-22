@@ -1,0 +1,12 @@
+COMMAND git ['status'] EXIT 128
+fatal: not a git repository (or any of the parent directories): .git
+
+COMMAND git ['remote', '-v'] EXIT 128
+fatal: not a git repository (or any of the parent directories): .git
+
+COMMAND git ['branch', '-a'] EXIT 128
+fatal: not a git repository (or any of the parent directories): .git
+
+COMMAND git ['log', '--oneline', '--decorate', '-20'] EXIT 128
+fatal: not a git repository (or any of the parent directories): .git
+

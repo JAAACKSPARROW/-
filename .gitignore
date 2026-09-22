@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.ipynb_checkpoints/
+.DS_Store
+*.pyc
+.env
+.env.*
+*.pem
+*.key
+reproduction/cache/
+reproduction/logs/jupyter_runtime/
+reproduction/logs/tmp/
+reproduction/logs/git_final_state.txt
+
+# Original Git history archive remains local; excluded from public publication.
+reproduction/provenance/*.bundle

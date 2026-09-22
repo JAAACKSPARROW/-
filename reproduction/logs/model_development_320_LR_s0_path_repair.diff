@@ -1,0 +1,45 @@
+--- model_development_320_LR_s0.ipynb cell 0 original
+
++++ path repaired
+
+@@ -1,10 +1,10 @@
+
+ import pandas as pd
+
+-X_new = pd.read_csv('embedding_results/X_320_clean_LR.csv', delimiter=',',header = None,index_col= 0, skiprows=1)
+
++X_new = pd.read_csv('/Users/jingyuan/Documents/ChatGPT/模型构建/skinaging_predictor_ZJU/Database/X_320_clean_LR.csv', delimiter=',',header = None,index_col= 0, skiprows=1)
+
+ #X_out = pd.read_csv('generalization_data/X_test_nr_320.csv',delimiter=',',header = None,index_col= 0, skiprows=1)
+
+ #X_out_Sequence = pd.read_csv('generalization_data/X_test_nr.csv',delimiter=',',header = None,index_col= 0, dtype={0: int},skiprows=1)
+
+ # load numpy array from csv file
+
+ from numpy import loadtxt
+
+ import numpy as np
+
+ # load array
+
+-y_new = loadtxt('embedding_results/y_after_clean.csv', delimiter=',')
+
++y_new = loadtxt('/Users/jingyuan/Documents/ChatGPT/模型构建/skinaging_predictor_ZJU/Database/y_after_clean.csv', delimiter=',')
+
+ 
+
+--- model_development_320_LR_s0.ipynb cell 2 original
+
++++ path repaired
+
+@@ -1,3 +1,5 @@
+
++import sys
+
++sys.path.insert(0,'/Users/jingyuan/Documents/ChatGPT/模型构建/skinaging_predictor_ZJU')
+
+ import statistics
+
+ from sklearn.metrics import balanced_accuracy_score
+
+ from self_function import evaluation as eva

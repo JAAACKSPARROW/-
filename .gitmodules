@@ -1,0 +1,3 @@
+[submodule "skinaging_predictor_ZJU"]
+	path = skinaging_predictor_ZJU
+	url = https://github.com/RH0627/skinaging_predictor_ZJU.git

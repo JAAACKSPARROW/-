@@ -1,0 +1,17 @@
+{
+  "parameters": {
+    "max_depth": 5,
+    "max_features": "log2",
+    "n_estimators": 320
+  },
+  "best_cv_score": 0.941005291005291,
+  "scoring": "accuracy (default)",
+  "cv": 10,
+  "split_seed": 2001,
+  "search_seconds": 132.19423695899968,
+  "train_size": 271,
+  "test_size": 68,
+  "scaler": null,
+  "harness_numpy_seed": 0,
+  "estimator_random_state": null
+}

@@ -1,0 +1,15 @@
+{
+  "parameters": {
+    "C": 6
+  },
+  "best_cv_score": 0.9445767195767196,
+  "scoring": "accuracy (default)",
+  "cv": 10,
+  "split_seed": 2001,
+  "search_seconds": 0.40548479100016266,
+  "train_size": 271,
+  "test_size": 68,
+  "scaler": null,
+  "harness_numpy_seed": 0,
+  "estimator_random_state": null
+}

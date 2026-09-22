@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "checks": [
+    "All inventoried original author file SHA256 unchanged",
+    "Author full-batch and reconstruction minibatch agree within 2e-5",
+    "All six models have finite metrics/timing; repeated SVM experiments have seeds 0–9; confusion-matrix counts reconcile",
+    "Independent seed0 SVM refit reproduces persisted MCC and standard BACC",
+    "All full original model grids completed with finite CV scores"
+  ],
+  "metric_rows": 131,
+  "required_files": [
+    "REPRODUCTION_REPORT.md",
+    "DATA_AUDIT.md",
+    "results/model_metrics.csv",
+    "results/paper_vs_reproduction.csv",
+    "requirements.txt",
+    "run_reproduction.py",
+    "predict.py",
+    "models/svm_final.joblib"
+  ]
+}

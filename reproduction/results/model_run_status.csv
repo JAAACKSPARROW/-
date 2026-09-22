@@ -1,0 +1,9 @@
+model,status,seconds,error
+SVM,PASS,3.155894542000169,
+LR,PASS,0.5110256669995579,
+KNN,PASS,34.08510920899971,
+RF,PASS,136.94323066699965,
+LightGBM,FAIL,0.0360809579997294,"dlopen(/Users/jingyuan/Documents/ChatGPT/模型构建/.venv/lib/python3.12/site-packages/lightgbm/lib/lib_lightgbm.dylib, 0x0006): Library not loaded: @rpath/libomp.dylib
+  Referenced from: <D44045CD-B874-3A27-9A61-F131D99AACE4> /Users/jingyuan/Documents/ChatGPT/模型构建/.venv/lib/python3.12/site-packages/lightgbm/lib/lib_lightgbm.dylib
+  Reason: tried: '/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/opt/local/lib/libomp/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/local/lib/libomp/libomp.dylib' (no such file), '/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/opt/local/lib/libomp/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/local/lib/libomp/libomp.dylib' (no such file), '/Users/jingyuan/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/libomp.dylib' (no such file), '/Users/jingyuan/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/libomp.dylib' (no such file)"
+LightGBM,PASS,14.71478712499993,

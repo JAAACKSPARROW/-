@@ -1,0 +1,130 @@
+
+### CELL 0 code
+import os
+os.chdir('C:/Users/RH/A_jiaoyuan/model/embedding_results')
+
+
+### CELL 1 code
+import pandas as pd
+import numpy as np
+import esm
+import torch
+
+print(pd.__version__)
+print(np.__version__)
+print(esm.__version__)
+print(torch.__version__)
+
+OUTPUT:
+1.5.3
+1.26.4
+2.0.0
+2.0.0
+
+
+### CELL 2 code
+import numpy as np
+import pandas as pd
+
+
+### CELL 3 code
+#training dataset loading
+#打开指定路径的excel文件
+excel_path = r'C:\Users\RH\A_jiaoyuan\database\your_file_name.xlsx'
+dataset = pd.read_excel(excel_path, na_filter=False)
+sequence_list = dataset['Sequence']
+
+
+### CELL 4 code
+print(sequence_list)
+
+OUTPUT:
+0                 GEKG
+1                KTTKS
+2                   AH
+3               EEMQRR
+4               FVAPFP
+             ...      
+1559          KDERMSRT
+1560         FMGHIASRT
+1561         RSVNYGLQD
+1562        IRLCGGNKSL
+1563    LAREPEVRSKRKLL
+Name: Sequence, Length: 1564, dtype: object
+
+
+### CELL 5 code
+peptide_sequence_list = []
+for seq in sequence_list:
+    format_seq = [seq,seq]
+    tuple_sequence = tuple(format_seq)
+    peptide_sequence_list.append(tuple_sequence)
+#print(peptide_sequence_list)
+
+
+### CELL 6 code
+#调试完毕，以此为准！
+import torch
+import esm
+import pandas as pd
+
+#load ESM-2 model
+model, alphabet = esm.pretrained.esm2_t6_8M_UR50D()
+batch_converter = alphabet.get_batch_converter()
+model.eval()
+    
+#load data
+data = peptide_sequence_list
+batch_labels, batch_strs, batch_tokens = batch_converter(data)
+batch_lens = (batch_tokens != alphabet.padding_idx).sum(1)
+    
+# Extract per-residue representations (on CPU)
+with torch.no_grad():
+    results = model(batch_tokens, repr_layers=[6], return_contacts=True)
+token_representations = results["representations"][6]
+    
+# Generate per-sequence representations via averaging
+sequence_representations = []
+for i, token_len in enumerate(batch_lens):
+    each_seq_rep = token_representations[i, 1:token_len - 1].mean(0).tolist()  
+    sequence_representations.append(each_seq_rep)
+
+embedding_results = pd.DataFrame(sequence_representations)
+print(embedding_results)
+embedding_results.to_csv('output_name.csv')
+
+
+### CELL 7 code
+
+
+
+### CELL 8 code
+
+
+
+### CELL 9 code
+
+
+
+### CELL 10 code
+
+
+
+### CELL 11 code
+
+
+
+### CELL 12 code
+
+
+
+### CELL 13 code
+
+
+
+### CELL 14 code
+
+
+
+### CELL 15 code
+

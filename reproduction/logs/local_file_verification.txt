@@ -1,0 +1,8 @@
+/Users/jingyuan/Documents/ChatGPT/模型构建/reproduction/REPRODUCTION_REPORT.md
+/Users/jingyuan/Documents/ChatGPT/模型构建/reproduction/DATA_AUDIT.md
+/Users/jingyuan/Documents/ChatGPT/模型构建/reproduction/results/model_metrics.csv
+/Users/jingyuan/Documents/ChatGPT/模型构建/reproduction/results/paper_vs_reproduction.csv
+/Users/jingyuan/Documents/ChatGPT/模型构建/reproduction/requirements.txt
+/Users/jingyuan/Documents/ChatGPT/模型构建/reproduction/run_reproduction.py
+/Users/jingyuan/Documents/ChatGPT/模型构建/reproduction/predict.py
+/Users/jingyuan/Documents/ChatGPT/模型构建/reproduction/models/svm_final.joblib

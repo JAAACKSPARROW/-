@@ -1,0 +1,12 @@
+[
+  {
+    "path": "reproduction/cache/torch/hub/checkpoints/esm2_t6_8M_UR50D.pt",
+    "size_bytes": 30099493,
+    "sha256": "46f002a9870c9bdecd0ea887acb1f9a38a6b561e8f8bf8a6990b679b9d31b928"
+  },
+  {
+    "path": "reproduction/cache/torch/hub/checkpoints/esm2_t6_8M_UR50D-contact-regression.pt",
+    "size_bytes": 1511,
+    "sha256": "8f7a4557d57713b97ba0e484303007efb7230d25299c0ac47a0a1b12a87bbb9d"
+  }
+]
