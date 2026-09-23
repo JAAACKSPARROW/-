@@ -1,0 +1,74 @@
+Downloading: "https://dl.fbaipublicfiles.com/fair-esm/models/esm2_t6_8M_UR50D.pt" to /Users/jingyuan/Documents/ChatGPT/模型构建/reproduction/cache/torch/hub/checkpoints/esm2_t6_8M_UR50D.pt
+Traceback (most recent call last):
+  File "/Users/jingyuan/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/urllib/request.py", line 1344, in do_open
+    h.request(req.get_method(), req.selector, req.data, headers,
+  File "/Users/jingyuan/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/client.py", line 1386, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/Users/jingyuan/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/client.py", line 1432, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/Users/jingyuan/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/client.py", line 1381, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/Users/jingyuan/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/client.py", line 1141, in _send_output
+    self.send(msg)
+  File "/Users/jingyuan/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/client.py", line 1085, in send
+    self.connect()
+  File "/Users/jingyuan/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/client.py", line 1520, in connect
+    super().connect()
+  File "/Users/jingyuan/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/client.py", line 1051, in connect
+    self.sock = self._create_connection(
+                ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jingyuan/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socket.py", line 841, in create_connection
+    for res in getaddrinfo(host, port, 0, SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jingyuan/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 8] nodename nor servname provided, or not known
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/jingyuan/Documents/ChatGPT/模型构建/reproduction/src/embeddings.py", line 41, in <module>
+    if __name__=='__main__':run()
+                            ^^^^^
+  File "/Users/jingyuan/Documents/ChatGPT/模型构建/reproduction/src/embeddings.py", line 24, in run
+    X=embed(raw.Sequence.tolist());np.save(path,X)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jingyuan/Documents/ChatGPT/模型构建/reproduction/src/embeddings.py", line 6, in embed
+    model,alphabet=esm.pretrained.esm2_t6_8M_UR50D()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jingyuan/Documents/ChatGPT/模型构建/.venv/lib/python3.12/site-packages/esm/pretrained.py", line 355, in esm2_t6_8M_UR50D
+    return load_model_and_alphabet_hub("esm2_t6_8M_UR50D")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jingyuan/Documents/ChatGPT/模型构建/.venv/lib/python3.12/site-packages/esm/pretrained.py", line 63, in load_model_and_alphabet_hub
+    model_data, regression_data = _download_model_and_regression_data(model_name)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jingyuan/Documents/ChatGPT/模型构建/.venv/lib/python3.12/site-packages/esm/pretrained.py", line 54, in _download_model_and_regression_data
+    model_data = load_hub_workaround(url)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jingyuan/Documents/ChatGPT/模型构建/.venv/lib/python3.12/site-packages/esm/pretrained.py", line 33, in load_hub_workaround
+    data = torch.hub.load_state_dict_from_url(url, progress=False, map_location="cpu")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jingyuan/Documents/ChatGPT/模型构建/.venv/lib/python3.12/site-packages/torch/hub.py", line 867, in load_state_dict_from_url
+    download_url_to_file(url, cached_file, hash_prefix, progress=progress)
+  File "/Users/jingyuan/Documents/ChatGPT/模型构建/.venv/lib/python3.12/site-packages/torch/hub.py", line 708, in download_url_to_file
+    u = urlopen(req)
+        ^^^^^^^^^^^^
+  File "/Users/jingyuan/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/urllib/request.py", line 215, in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jingyuan/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/urllib/request.py", line 515, in open
+    response = self._open(req, data)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jingyuan/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/urllib/request.py", line 532, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jingyuan/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/urllib/request.py", line 492, in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+  File "/Users/jingyuan/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/urllib/request.py", line 1392, in https_open
+    return self.do_open(http.client.HTTPSConnection, req,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jingyuan/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/urllib/request.py", line 1347, in do_open
+    raise URLError(err)
+urllib.error.URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>

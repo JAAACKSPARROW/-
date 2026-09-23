@@ -1,0 +1,23 @@
+Database/
+  Oringinal_data.xlsx
+  X_320_clean_LR.csv
+  y_after_clean.csv
+Model_development/
+  .ipynb_checkpoints/
+    ESM_embedding_task-320-checkpoint.ipynb
+    model_development_320_LR_s0-checkpoint.ipynb
+  ESM_embedding_task-320.ipynb
+  model_development_320_LR_s0.ipynb
+README.md
+Sequence of collagens/
+  bovine1.txt
+  bovine2.txt
+  chicken1.txt
+  chicken2.txt
+  pig1.txt
+  pig2.txt
+  salmon1.txt
+  salmon2.txt
+  tilapia1.txt
+  tilapia2.txt
+self_function.py

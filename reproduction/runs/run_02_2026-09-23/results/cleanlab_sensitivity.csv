@@ -1,0 +1,13 @@
+cv_folds,cv_seed,max_iter,retained,positive,negative,agreement_with_author,design
+5,0,5000,353,170,183,0.9380952380952381,"independent sensitivity, not author algorithm"
+5,1,5000,345,165,180,0.9523809523809523,"independent sensitivity, not author algorithm"
+5,2,5000,352,173,179,0.930952380952381,"independent sensitivity, not author algorithm"
+5,3,5000,351,169,182,0.9476190476190476,"independent sensitivity, not author algorithm"
+5,4,5000,343,162,181,0.9476190476190476,"independent sensitivity, not author algorithm"
+5,5,5000,347,168,179,0.9476190476190476,"independent sensitivity, not author algorithm"
+5,6,5000,341,165,176,0.9428571428571428,"independent sensitivity, not author algorithm"
+5,7,5000,335,163,172,0.9476190476190476,"independent sensitivity, not author algorithm"
+5,8,5000,349,169,180,0.9428571428571428,"independent sensitivity, not author algorithm"
+5,9,5000,346,164,182,0.9404761904761905,"independent sensitivity, not author algorithm"
+10,0,5000,345,165,180,0.9571428571428572,"independent sensitivity, not author algorithm"
+5,0,100,353,170,183,0.9380952380952381,"independent sensitivity, not author algorithm"

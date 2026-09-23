@@ -6,6 +6,23 @@
 
 原代码网格 SVM 的标准 BACC 为 **0.9579 ± 0.0323**，MCC 为 **0.9154 ± 0.0643**。论文 Table S2 固定参数独立重跑 BACC **0.9301 ± 0.0314**，MCC **0.8599 ± 0.0614**。二者不可混为同一实验。完整解释见 [报告](reproduction/REPRODUCTION_REPORT.md)。
 
+## 第二次完整重跑与逐步流程图（2026-09-23）
+
+第二次从原始序列重新执行全部13个阶段，最终验证通过；与第一次的131条模型/划分记录逐条配对。ESM向量、独立CleanLab决策、划分成员和SVM预测完全一致。仅原代码网格的随机森林出现波动：MCC从0.8784变为0.8826，原代码的 `random_state=None` 保持不变。科学结论仍是部分复现。
+
+- [两次结果与论文、作者历史输出的完整对照](reproduction/comparisons/run_01_vs_run_02/TWO_RUN_COMPARISON.md)：包含流程图、12步解释、指标定义及差异原因。
+- [逐模型汇总](reproduction/comparisons/run_01_vs_run_02/all_models_readable_comparison.csv)与[131条逐划分配对](reproduction/comparisons/run_01_vs_run_02/paired_seed_results.csv)。
+- [第一次完整快照](reproduction/runs/run_01_2026-09-22/)与[第二次完整输出](reproduction/runs/run_02_2026-09-23/)，分别保留模型、数据、代码及日志。
+- [比较验证结果](reproduction/comparisons/run_01_vs_run_02/comparison_verification.json)：第一次快照170项文件及作者输入哈希均通过检查。
+
+重新生成对照报告与图表（不会重新训练）：
+
+```bash
+.venv/bin/python reproduction/src/compare_runs.py
+```
+
+`repeat_experiment.py` 记录本次两次实验的隔离执行方式；已有实验目录受保护。新实验应另设输出目录，以免覆盖已记录证据。
+
 ## 环境与运行
 
 本次实测 macOS arm64、Python 3.12.14，作者记录 Python 3.9。当前锁文件为现代兼容环境，不是作者原环境。建议 Python 3.12 创建隔离环境；不要用缺少 Xcode CLT 时的 macOS `/usr/bin/python3` 占位入口。

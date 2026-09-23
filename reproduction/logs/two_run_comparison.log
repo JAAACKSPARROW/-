@@ -1,0 +1,32 @@
+{
+  "paired_metric_rows": 131,
+  "archive_manifest_verified": 170,
+  "all_author_files_unchanged": true,
+  "environment_equal": true,
+  "esm_bitwise_equal": true,
+  "esm_max_abs_difference": 0.0,
+  "esm_mean_abs_difference": 0.0,
+  "cleanlab_keep_masks_equal": true,
+  "run1_cleanlab_kept": 353,
+  "run2_cleanlab_kept": 353,
+  "cleanlab_changed_decisions": 0,
+  "cleanlab_probability_max_abs_difference": 0.0,
+  "split_membership_identical": true,
+  "svm_all420_disagreements": 0,
+  "svm_all420_max_score_difference": 0.0,
+  "svm_support_indices_equal": true,
+  "svm_support_vectors_max_abs_delta": 0.0,
+  "all_selected_parameters_equal": false,
+  "changed_experiment_models": [
+    {
+      "experiment": "A_author_cleaned_code_grid",
+      "model": "RF"
+    }
+  ],
+  "actual_run2_status": {
+    "start_utc": "2026-09-23T02:12:10.788287+00:00",
+    "end_utc": "2026-09-23T02:16:55.053841+00:00",
+    "exit_code": 0
+  },
+  "publication_scope": "Original Git history bundle excluded; models/data/logs allowed by prior user approval"
+}

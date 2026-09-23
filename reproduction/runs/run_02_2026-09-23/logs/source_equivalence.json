@@ -1,0 +1,114 @@
+[
+  {
+    "file": "audit.py",
+    "run1_sha256": "dbebe200692cb9777d500ac7f620ee0754400c7d9baf0bef7e8b3b1ad4b28401",
+    "run2_sha256": "dbebe200692cb9777d500ac7f620ee0754400c7d9baf0bef7e8b3b1ad4b28401",
+    "equal": true,
+    "reason": "unchanged"
+  },
+  {
+    "file": "cleaning.py",
+    "run1_sha256": "e07df4b4ac7ec6160765159c22330782255c874b5a29b266cfd65dccc2169e72",
+    "run2_sha256": "e07df4b4ac7ec6160765159c22330782255c874b5a29b266cfd65dccc2169e72",
+    "equal": true,
+    "reason": "unchanged"
+  },
+  {
+    "file": "cleanlab_sensitivity.py",
+    "run1_sha256": "005d3ba02660d28ccdac96b7912a9b3e6b2ee196cc4d2c68fe0d76038aa6227e",
+    "run2_sha256": "005d3ba02660d28ccdac96b7912a9b3e6b2ee196cc4d2c68fe0d76038aa6227e",
+    "equal": true,
+    "reason": "unchanged"
+  },
+  {
+    "file": "common.py",
+    "run1_sha256": "f4941b6ccca2a23694321f56509c5d9570f67d5002d0e8599826397d51583594",
+    "run2_sha256": "ba3c3036986afc39016de9ce9bc3bca341c86aa8eea7899aff85bb6c76e1e9a2",
+    "equal": false,
+    "reason": "two path-routing lines only"
+  },
+  {
+    "file": "embeddings.py",
+    "run1_sha256": "8fcc8be5c690f071a9f7ae7cdc73e670ba2fc491c309992c8cdb85f80de105c8",
+    "run2_sha256": "8fcc8be5c690f071a9f7ae7cdc73e670ba2fc491c309992c8cdb85f80de105c8",
+    "equal": true,
+    "reason": "unchanged"
+  },
+  {
+    "file": "fetch_sources.py",
+    "run1_sha256": "138426be8c65ed324a4e6912a5936e4c589b3b6071716d37285047e6c8283a9f",
+    "run2_sha256": "138426be8c65ed324a4e6912a5936e4c589b3b6071716d37285047e6c8283a9f",
+    "equal": true,
+    "reason": "unchanged"
+  },
+  {
+    "file": "leakage.py",
+    "run1_sha256": "7304e6e77347a61acef40ec9a256862909c674f740c618aad0e0d781da7e43e9",
+    "run2_sha256": "7304e6e77347a61acef40ec9a256862909c674f740c618aad0e0d781da7e43e9",
+    "equal": true,
+    "reason": "unchanged"
+  },
+  {
+    "file": "lstm.py",
+    "run1_sha256": "593e2a3df8241ca5b87af96958c779eff3d10e50010de71d58c37eb4e5c4a36a",
+    "run2_sha256": "593e2a3df8241ca5b87af96958c779eff3d10e50010de71d58c37eb4e5c4a36a",
+    "equal": true,
+    "reason": "unchanged"
+  },
+  {
+    "file": "models.py",
+    "run1_sha256": "97e9ca6e8bf951fc0decb9d095d0657efdb574abc641929eb7053623965418e3",
+    "run2_sha256": "97e9ca6e8bf951fc0decb9d095d0657efdb574abc641929eb7053623965418e3",
+    "equal": true,
+    "reason": "unchanged"
+  },
+  {
+    "file": "original_notebooks.py",
+    "run1_sha256": "306060ce6201a279ed94bbd2676f2dafe11b757a22fb1d5b7f96cfad1a689952",
+    "run2_sha256": "306060ce6201a279ed94bbd2676f2dafe11b757a22fb1d5b7f96cfad1a689952",
+    "equal": true,
+    "reason": "unchanged"
+  },
+  {
+    "file": "paper_parameters.py",
+    "run1_sha256": "6a30bbe612c7ebb4a26fc8e73dc01b9616e40e6686b4db1e9f761dbe68266fdc",
+    "run2_sha256": "6a30bbe612c7ebb4a26fc8e73dc01b9616e40e6686b4db1e9f761dbe68266fdc",
+    "equal": true,
+    "reason": "unchanged"
+  },
+  {
+    "file": "repaired_notebooks.py",
+    "run1_sha256": "038472979af671f2366f6995f25b1287d26c6f39d03bcad838f5d68b2fc68d42",
+    "run2_sha256": "038472979af671f2366f6995f25b1287d26c6f39d03bcad838f5d68b2fc68d42",
+    "equal": true,
+    "reason": "unchanged"
+  },
+  {
+    "file": "repeat_experiment.py",
+    "run1_sha256": "2174bd90eb4550ba5fbcd4fa072fd55cea3d44927564f5c3e7dbc2885823bd56",
+    "run2_sha256": "2174bd90eb4550ba5fbcd4fa072fd55cea3d44927564f5c3e7dbc2885823bd56",
+    "equal": true,
+    "reason": "unchanged"
+  },
+  {
+    "file": "report.py",
+    "run1_sha256": "025e058dc3ea0ea40ab835ec332654e2b146c0b53697df78022b8067c93f9c93",
+    "run2_sha256": "025e058dc3ea0ea40ab835ec332654e2b146c0b53697df78022b8067c93f9c93",
+    "equal": true,
+    "reason": "unchanged"
+  },
+  {
+    "file": "secret_audit.py",
+    "run1_sha256": "1ca542b932d1d0a6310b10b38fa64652ac0097696cf58330236b8dc46f153f5a",
+    "run2_sha256": "1ca542b932d1d0a6310b10b38fa64652ac0097696cf58330236b8dc46f153f5a",
+    "equal": true,
+    "reason": "unchanged"
+  },
+  {
+    "file": "verify.py",
+    "run1_sha256": "147b42d9cc6691858e86c8884c89ced16dfdd554ff6ea3fd87971f0c4bc35305",
+    "run2_sha256": "147b42d9cc6691858e86c8884c89ced16dfdd554ff6ea3fd87971f0c4bc35305",
+    "equal": true,
+    "reason": "unchanged"
+  }
+]

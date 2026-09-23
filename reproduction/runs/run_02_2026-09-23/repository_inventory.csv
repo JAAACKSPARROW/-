@@ -1,0 +1,20 @@
+path,filename,extension,size_bytes,category,likely_role
+Database/Oringinal_data.xlsx,Oringinal_data.xlsx,.xlsx,21289,raw peptide data,raw sequences and labels
+Database/X_320_clean_LR.csv,X_320_clean_LR.csv,.csv,1344921,ESM embedding,cleaned 320D features with original No index
+Database/y_after_clean.csv,y_after_clean.csv,.csv,678,cleaned data,"cleaned labels, positional alignment with X"
+Model_development/.ipynb_checkpoints/ESM_embedding_task-320-checkpoint.ipynb,ESM_embedding_task-320-checkpoint.ipynb,.ipynb,5435,notebooks,author code and stored outputs
+Model_development/.ipynb_checkpoints/model_development_320_LR_s0-checkpoint.ipynb,model_development_320_LR_s0-checkpoint.ipynb,.ipynb,52699,notebooks,author code and stored outputs
+Model_development/ESM_embedding_task-320.ipynb,ESM_embedding_task-320.ipynb,.ipynb,5435,notebooks,author code and stored outputs
+Model_development/model_development_320_LR_s0.ipynb,model_development_320_LR_s0.ipynb,.ipynb,52699,notebooks,author code and stored outputs
+README.md,README.md,.md,26,documentation,repository README
+Sequence of collagens/bovine1.txt,bovine1.txt,.txt,1554,supplementary data,collagen sequences; not training peptides
+Sequence of collagens/bovine2.txt,bovine2.txt,.txt,1455,supplementary data,collagen sequences; not training peptides
+Sequence of collagens/chicken1.txt,chicken1.txt,.txt,1547,supplementary data,collagen sequences; not training peptides
+Sequence of collagens/chicken2.txt,chicken2.txt,.txt,1457,supplementary data,collagen sequences; not training peptides
+Sequence of collagens/pig1.txt,pig1.txt,.txt,1581,supplementary data,collagen sequences; not training peptides
+Sequence of collagens/pig2.txt,pig2.txt,.txt,1481,supplementary data,collagen sequences; not training peptides
+Sequence of collagens/salmon1.txt,salmon1.txt,.txt,1554,supplementary data,collagen sequences; not training peptides
+Sequence of collagens/salmon2.txt,salmon2.txt,.txt,1468,supplementary data,collagen sequences; not training peptides
+Sequence of collagens/tilapia1.txt,tilapia1.txt,.txt,1548,supplementary data,collagen sequences; not training peptides
+Sequence of collagens/tilapia2.txt,tilapia2.txt,.txt,1451,supplementary data,collagen sequences; not training peptides
+self_function.py,self_function.py,.py,2781,Python scripts,evaluation helper

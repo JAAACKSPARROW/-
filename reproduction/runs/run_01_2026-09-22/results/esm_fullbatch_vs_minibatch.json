@@ -1,0 +1,9 @@
+{
+  "max_abs_difference": 2.2649765013538214e-06,
+  "mean_abs_difference": 9.494630118116166e-08,
+  "shape": [
+    420,
+    320
+  ],
+  "source": "actual executed path-only repaired author ESM notebook vs batch32 reconstruction"
+}

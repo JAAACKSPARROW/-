@@ -1,0 +1,18 @@
+{
+  "status": "INDEPENDENT_RECONSTRUCTION_NOT_EXACT_AUTHOR_REPRODUCTION",
+  "version": "2.7.0",
+  "author_source": "not publicly provided",
+  "base_classifier": "LogisticRegression(max_iter=5000)",
+  "cv": "StratifiedKFold(5, shuffle=True, random_state=0)",
+  "api": "cross_val_predict + find_label_issues(filter_by=prune_by_noise_rate)",
+  "issue_score_definition": "self_confidence: lower is more suspicious",
+  "threshold": "CleanLab default; no manual tuning",
+  "intersection": 333,
+  "author_only": 6,
+  "reproduction_only": 20,
+  "agreement_rate": 0.9380952380952381,
+  "author_retained": 339,
+  "reproduction_retained": 353,
+  "reproduction_positive": 170,
+  "reproduction_negative": 183
+}

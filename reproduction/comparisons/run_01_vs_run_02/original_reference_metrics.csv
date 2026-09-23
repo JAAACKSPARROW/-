@@ -1,0 +1,57 @@
+source,model,metric,mean,std,semantics,source_cell
+author_stored_notebook,LR,balanced_accuracy,0.943,0.019,author_printed_label_not_standard_definition,4
+author_stored_notebook,LR,recall,0.927,0.035,author_printed_label_not_standard_definition,4
+author_stored_notebook,LR,precision,0.926,0.034,author_printed_label_not_standard_definition,4
+author_stored_notebook,LR,mcc,0.886,0.036,standard,4
+author_stored_notebook,LR,f1,0.926,0.023,author_printed_label_not_standard_definition,4
+author_stored_notebook,LR,roc_auc,0.991,0.004,standard,4
+author_stored_notebook,RF,balanced_accuracy,0.755,0.035,author_printed_label_not_standard_definition,5
+author_stored_notebook,RF,recall,0.738,0.07,author_printed_label_not_standard_definition,5
+author_stored_notebook,RF,precision,0.71,0.063,author_printed_label_not_standard_definition,5
+author_stored_notebook,RF,mcc,0.508,0.068,standard,5
+author_stored_notebook,RF,f1,0.72,0.044,author_printed_label_not_standard_definition,5
+author_stored_notebook,RF,roc_auc,0.849,0.041,standard,5
+author_stored_notebook,KNN,balanced_accuracy,0.759,0.029,author_printed_label_not_standard_definition,6
+author_stored_notebook,KNN,recall,0.704,0.058,author_printed_label_not_standard_definition,6
+author_stored_notebook,KNN,precision,0.789,0.052,author_printed_label_not_standard_definition,6
+author_stored_notebook,KNN,mcc,0.522,0.056,standard,6
+author_stored_notebook,KNN,f1,0.743,0.043,author_printed_label_not_standard_definition,6
+author_stored_notebook,KNN,roc_auc,0.825,0.049,standard,6
+author_stored_notebook,SVM,balanced_accuracy,0.773,0.037,author_printed_label_not_standard_definition,7
+author_stored_notebook,SVM,recall,0.734,0.066,author_printed_label_not_standard_definition,7
+author_stored_notebook,SVM,precision,0.779,0.04,author_printed_label_not_standard_definition,7
+author_stored_notebook,SVM,mcc,0.55,0.072,standard,7
+author_stored_notebook,SVM,f1,0.755,0.049,author_printed_label_not_standard_definition,7
+author_stored_notebook,SVM,roc_auc,0.867,0.038,standard,7
+author_stored_notebook,LightGBM,balanced_accuracy,0.786,0.033,author_printed_label_not_standard_definition,8
+author_stored_notebook,LightGBM,recall,0.765,0.056,author_printed_label_not_standard_definition,8
+author_stored_notebook,LightGBM,precision,0.759,0.034,author_printed_label_not_standard_definition,8
+author_stored_notebook,LightGBM,mcc,0.572,0.065,standard,8
+author_stored_notebook,LightGBM,f1,0.762,0.042,author_printed_label_not_standard_definition,8
+author_stored_notebook,LightGBM,roc_auc,0.868,0.032,standard,8
+author_stored_notebook,LSTM,mcc,0.49450830280032865,,single split42; standard definition,11
+author_stored_notebook,LSTM,roc_auc,0.8227272727272728,,single split42; standard definition,11
+paper_Table_S2,LR,balanced_accuracy,0.903,0.09,paper-reported; helper naming and CV-vs-repeat ambiguity,Table S2
+paper_Table_S2,LR,recall,0.896,0.138,paper-reported; helper naming and CV-vs-repeat ambiguity,Table S2
+paper_Table_S2,LR,precision,0.922,0.104,paper-reported; helper naming and CV-vs-repeat ambiguity,Table S2
+paper_Table_S2,LR,mcc,0.822,0.172,paper-reported; helper naming and CV-vs-repeat ambiguity,Table S2
+paper_Table_S2,RF,balanced_accuracy,0.94,0.026,paper-reported; helper naming and CV-vs-repeat ambiguity,Table S2
+paper_Table_S2,RF,recall,0.917,0.043,paper-reported; helper naming and CV-vs-repeat ambiguity,Table S2
+paper_Table_S2,RF,precision,0.965,0.02,paper-reported; helper naming and CV-vs-repeat ambiguity,Table S2
+paper_Table_S2,RF,mcc,0.878,0.052,paper-reported; helper naming and CV-vs-repeat ambiguity,Table S2
+paper_Table_S2,KNN,balanced_accuracy,0.903,0.306,paper-reported; helper naming and CV-vs-repeat ambiguity,Table S2
+paper_Table_S2,KNN,recall,0.9,0.043,paper-reported; helper naming and CV-vs-repeat ambiguity,Table S2
+paper_Table_S2,KNN,precision,0.911,0.042,paper-reported; helper naming and CV-vs-repeat ambiguity,Table S2
+paper_Table_S2,KNN,mcc,0.806,0.074,paper-reported; helper naming and CV-vs-repeat ambiguity,Table S2
+paper_Table_S2,SVM,balanced_accuracy,0.963,0.022,paper-reported; helper naming and CV-vs-repeat ambiguity,Table S2
+paper_Table_S2,SVM,recall,0.976,0.024,paper-reported; helper naming and CV-vs-repeat ambiguity,Table S2
+paper_Table_S2,SVM,precision,0.951,0.03,paper-reported; helper naming and CV-vs-repeat ambiguity,Table S2
+paper_Table_S2,SVM,mcc,0.927,0.044,paper-reported; helper naming and CV-vs-repeat ambiguity,Table S2
+paper_Table_S2,LightGBM,balanced_accuracy,0.942,0.018,paper-reported; helper naming and CV-vs-repeat ambiguity,Table S2
+paper_Table_S2,LightGBM,recall,0.937,0.026,paper-reported; helper naming and CV-vs-repeat ambiguity,Table S2
+paper_Table_S2,LightGBM,precision,0.947,0.031,paper-reported; helper naming and CV-vs-repeat ambiguity,Table S2
+paper_Table_S2,LightGBM,mcc,0.883,0.034,paper-reported; helper naming and CV-vs-repeat ambiguity,Table S2
+paper_Table_S2,LSTM,balanced_accuracy,0.964,0.016,paper-reported; helper naming and CV-vs-repeat ambiguity,Table S2
+paper_Table_S2,LSTM,recall,0.96,0.037,paper-reported; helper naming and CV-vs-repeat ambiguity,Table S2
+paper_Table_S2,LSTM,precision,0.96,0.039,paper-reported; helper naming and CV-vs-repeat ambiguity,Table S2
+paper_Table_S2,LSTM,mcc,0.924,0.029,paper-reported; helper naming and CV-vs-repeat ambiguity,Table S2

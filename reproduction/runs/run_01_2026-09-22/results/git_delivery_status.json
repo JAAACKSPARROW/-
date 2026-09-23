@@ -1,0 +1,16 @@
+{
+  "branch": "codex-reproduction",
+  "remote": "https://github.com/JAAACKSPARROW/-.git",
+  "original_local_commit": "68b66bd2481c799711e34310b10154037d8f6c01",
+  "publication_method": "Authenticated GitHub connector Git Database API; direct Git push lacks local authentication",
+  "initial_attempt_status": "NO_GITHUB_REMOTE_CONFIGURED (historical; remote now configured)",
+  "verification_receipt": "reproduction/logs/git_final_state.txt (local, outside its referenced commit)",
+  "original_history_archive_local_only": "reproduction/provenance/original_reproduction.bundle",
+  "excluded_from_publication": [
+    "Original Git history bundle",
+    ".venv",
+    "Pretrained ESM weights and caches",
+    "Credentials"
+  ],
+  "user_confirmed_publication_scope": "Reproduction code, reports, logs including local paths, public-source datasets and paper supplement, and trained models; explicitly excludes original Git history archive."
+}

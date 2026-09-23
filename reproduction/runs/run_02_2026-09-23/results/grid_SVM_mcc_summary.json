@@ -1,0 +1,11 @@
+{
+  "parameters": {
+    "C": 30,
+    "degree": 5,
+    "kernel": "poly",
+    "tol": 1e-05
+  },
+  "best_cv_score": 0.9062987007605541,
+  "scoring": "MCC",
+  "search_seconds": 4.105193332994531
+}

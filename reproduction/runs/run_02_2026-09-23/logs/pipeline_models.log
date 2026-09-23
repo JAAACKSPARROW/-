@@ -1,0 +1,14 @@
+START author grid SVM
+DONE SVM {'C': 30, 'degree': 5, 'kernel': 'poly', 'tol': 1e-05}
+START author grid LR
+DONE LR {'C': 6}
+START author grid KNN
+/Users/jingyuan/Documents/ChatGPT/模型构建/.venv/lib/python3.12/site-packages/joblib/externals/loky/process_executor.py:787: UserWarning: A worker stopped while some jobs were given to the executor. This can be caused by a too short worker timeout or by a memory leak.
+  warnings.warn(
+DONE KNN {'algorithm': 'auto', 'leaf_size': 10, 'n_neighbors': 2, 'weights': 'distance'}
+START author grid RF
+DONE RF {'max_depth': 4, 'max_features': 'sqrt', 'n_estimators': 480}
+START author grid LightGBM
+/Users/jingyuan/Documents/ChatGPT/模型构建/.venv/lib/python3.12/site-packages/numpy/ma/core.py:2820: RuntimeWarning: invalid value encountered in cast
+  _data = np.array(data, dtype=dtype, copy=copy,
+DONE LightGBM {'learning_rate': 1, 'max_depth': -1, 'n_estimators': 40, 'reg_lambda': 0}

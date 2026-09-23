@@ -1,0 +1,18 @@
+{
+  "parameters": {
+    "algorithm": "auto",
+    "leaf_size": 10,
+    "n_neighbors": 2,
+    "weights": "distance"
+  },
+  "best_cv_score": 0.9223544973544973,
+  "scoring": "accuracy (default)",
+  "cv": 10,
+  "split_seed": 2001,
+  "search_seconds": 34.030887417000486,
+  "train_size": 271,
+  "test_size": 68,
+  "scaler": null,
+  "harness_numpy_seed": 0,
+  "estimator_random_state": "not applicable"
+}

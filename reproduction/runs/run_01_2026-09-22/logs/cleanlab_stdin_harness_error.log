@@ -1,0 +1,5 @@
+Early harness failure (representative traceback; repeated multiprocessing worker messages were returned by the terminal and not fully retained):
+  multiprocessing/spawn.py _fixup_main_from_path
+  runpy.run_path(main_path)
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/jingyuan/Documents/ChatGPT/模型构建/<stdin>'
+The run was interrupted without results. Fixed by invoking reproduction/src/cleaning.py with a __main__ guard. This was a harness failure, not an author-code failure.

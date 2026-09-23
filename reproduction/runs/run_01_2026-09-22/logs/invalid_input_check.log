@@ -1,0 +1,2 @@
+usage: predict.py [-h] --sequence SEQUENCE
+predict.py: error: sequence must contain uppercase standard amino acids only; no whitespace

@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/Users/jingyuan/Documents/ChatGPT/模型构建/reproduction/runs/run_02_2026-09-23/src/lstm.py", line 21, in run
+    exec(source,env);status='PASS';repair='none'
+    ^^^^^^^^^^^^^^^^
+  File "<string>", line 37, in <module>
+  File "/Users/jingyuan/Documents/ChatGPT/模型构建/.venv/lib/python3.12/site-packages/keras/src/utils/traceback_utils.py", line 122, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/Users/jingyuan/Documents/ChatGPT/模型构建/.venv/lib/python3.12/site-packages/keras/src/backend/tensorflow/nn.py", line 1461, in binary_crossentropy
+    raise ValueError(
+ValueError: Arguments `target` and `output` must have the same rank (ndim). Received: target.shape=(None,), output.shape=(None, 1, 1)

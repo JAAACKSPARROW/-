@@ -1,0 +1,12 @@
+{
+  "parameters": {
+    "C": 5,
+    "degree": 7,
+    "kernel": "poly",
+    "tol": 1e-05
+  },
+  "best_cv_score": 0.9535714285714285,
+  "search_seconds": 3.5072191250001197,
+  "scoring": "accuracy",
+  "cleanlab": "independent reconstruction"
+}

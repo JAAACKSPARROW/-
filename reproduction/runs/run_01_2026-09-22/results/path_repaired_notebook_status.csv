@@ -1,0 +1,70 @@
+notebook,status,error,modifications
+ESM_embedding_task-320.ipynb,PASS,,paths/import resolution only
+model_development_320_LR_s0.ipynb,PARTIAL,"An error occurred while executing the following cell:
+------------------
+# logistic regresion without penality and solver
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import GridSearchCV
+clf = LogisticRegression(max_iter = 5000)
+param_grid = {'C':[0.5,1,1.5,2,2.5,4,6,8,13,14,15,16,20,30,40, 50,60,70, 80, 90 ,100,125, 500, 1000,2000,4000,10000]}
+grid_search = GridSearchCV(clf,param_grid,cv=10,n_jobs=-1)
+grid_search.fit(X_train_whole,y_train_whole)
+best_model_reg = grid_search.best_estimator_
+y_pred = best_model_reg.predict(X_out)
+#model performance evaluation:BACC & recall & accuracy & MCC & f1 score& roc_auc
+
+evaluation = eva(best_model_reg,X_new,y_new)
+print(evaluation)
+
+#print the model's parameters and validation score
+print(""About model development"")
+print(""Best Parameters:{}"".format(grid_search.best_params_))
+print(""Best cross_validation socre:{:.3f}"".format(grid_search.best_score_))
+print(""Test set score:{:.2f}"".format(grid_search.score(X_ind_test,y_ind_test)))
+print(""Best_estimator:\n{}"".format(grid_search.best_estimator_))
+
+# get the probability of class 1
+y_pred_prob = best_model_reg.predict_proba(X_out)[:, 1]
+
+# 根据排序后的索引获取预测结果和概率
+sorted_indices = np.argsort(y_pred_prob)[::-1]
+sorted_y_pred = y_pred[sorted_indices]
+sorted_prob = y_pred_prob[sorted_indices]
+
+sorted_sequence = X_out_Sequence.iloc[sorted_indices]
+
+# 将预测结果为0的序列移到最后
+zero_indices = np.where(sorted_y_pred == 0)[0]
+non_zero_indices = np.where(sorted_y_pred != 0)[0]
+sorted_sequence = pd.concat([sorted_sequence.iloc[non_zero_indices], sorted_sequence.iloc[zero_indices]])
+sorted_y_pred = np.concatenate((sorted_y_pred[non_zero_indices], sorted_y_pred[zero_indices]))
+sorted_prob = np.concatenate((sorted_prob[non_zero_indices], sorted_prob[zero_indices]))
+
+# 输出结果
+output = np.column_stack((sorted_sequence, sorted_y_pred, sorted_prob))
+
+print(""Sorted Sequence, Predictions, and Probabilities:"")
+for item in output:
+    if item[2] == 0:
+        print(item[0], item[1], item[2],'-')
+    else:
+        print(item[0], item[1], item[2],item[3])
+
+
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mNameError[39m                                 Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[5][39m[32m, line 9[39m
+[32m      5[39m param_grid = {[33m'C'[39m:[[32m0.5[39m,[32m1[39m,[32m1.5[39m,[32m2[39m,[32m2.5[39m,[32m4[39m,[32m6[39m,[32m8[39m,[32m13[39m,[32m14[39m,[32m15[39m,[32m16[39m,[32m20[39m,[32m30[39m,[32m40[39m, [32m50[39m,[32m60[39m,[32m70[39m, [32m80[39m, [32m90[39m ,[32m100[39m,[32m125[39m, [32m500[39m, [32m1000[39m,[32m2000[39m,[32m4000[39m,[32m10000[39m]}
+[32m      6[39m grid_search = GridSearchCV(clf,param_grid,cv=[32m10[39m,n_jobs=-[32m1[39m)
+[32m      7[39m grid_search.fit(X_train_whole,y_train_whole)
+[32m      8[39m best_model_reg = grid_search.best_estimator_
+[32m----> [39m[32m9[39m y_pred = best_model_reg.predict(X_out)
+[32m     10[39m [38;5;66;03m#model performance evaluation:BACC & recall & accuracy & MCC & f1 score& roc_auc[39;00m
+[32m     11[39m 
+[32m     12[39m evaluation = eva(best_model_reg,X_new,y_new)
+
+[31mNameError[39m: name 'X_out' is not defined
+",paths/import resolution only

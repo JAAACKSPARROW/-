@@ -1,0 +1,13 @@
+--- run1/src/common.py
++++ run2/src/common.py
+@@ -3,8 +3,8 @@
+ import os, json, time, sys
+ sys.dont_write_bytecode=True
+ os.environ['PYTHONDONTWRITEBYTECODE']='1'
+-ROOT = Path(__file__).resolve().parents[2]
+-REP = ROOT / 'reproduction'
++ROOT = Path(os.environ.get('REPRO_WORKSPACE_ROOT', Path(__file__).resolve().parents[2]))
++REP = Path(os.environ.get('REPRO_OUTPUT_ROOT', ROOT / 'reproduction'))
+ AUTHOR = ROOT / 'skinaging_predictor_ZJU'
+ RESULT = REP / 'results'
+ AUDIT = REP / 'data_audit'

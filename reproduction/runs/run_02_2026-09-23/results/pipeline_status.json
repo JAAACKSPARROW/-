@@ -1,0 +1,67 @@
+[
+  {
+    "stage": "data_audit",
+    "exit_code": 0,
+    "start_utc": "2026-09-23T02:12:10.807413+00:00"
+  },
+  {
+    "stage": "original_notebooks",
+    "exit_code": 0,
+    "start_utc": "2026-09-23T02:12:11.696427+00:00"
+  },
+  {
+    "stage": "path_repaired_notebooks",
+    "exit_code": 0,
+    "start_utc": "2026-09-23T02:12:13.504148+00:00"
+  },
+  {
+    "stage": "embeddings",
+    "exit_code": 0,
+    "start_utc": "2026-09-23T02:12:26.383284+00:00"
+  },
+  {
+    "stage": "cleanlab",
+    "exit_code": 0,
+    "start_utc": "2026-09-23T02:12:27.805805+00:00"
+  },
+  {
+    "stage": "cleanlab_sensitivity",
+    "exit_code": 0,
+    "start_utc": "2026-09-23T02:12:44.049725+00:00"
+  },
+  {
+    "stage": "models",
+    "exit_code": 0,
+    "start_utc": "2026-09-23T02:12:47.316865+00:00"
+  },
+  {
+    "stage": "svm_experiments",
+    "exit_code": 0,
+    "start_utc": "2026-09-23T02:15:52.153542+00:00"
+  },
+  {
+    "stage": "paper_parameters",
+    "exit_code": 0,
+    "start_utc": "2026-09-23T02:16:00.579468+00:00"
+  },
+  {
+    "stage": "lstm",
+    "exit_code": 0,
+    "start_utc": "2026-09-23T02:16:07.153974+00:00"
+  },
+  {
+    "stage": "leakage",
+    "exit_code": 0,
+    "start_utc": "2026-09-23T02:16:46.464779+00:00"
+  },
+  {
+    "stage": "report",
+    "exit_code": 0,
+    "start_utc": "2026-09-23T02:16:53.941287+00:00"
+  },
+  {
+    "stage": "verification",
+    "exit_code": 0,
+    "start_utc": "2026-09-23T02:16:54.398661+00:00"
+  }
+]

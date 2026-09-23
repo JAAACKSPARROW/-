@@ -1,0 +1,17 @@
+Downloading: "https://dl.fbaipublicfiles.com/fair-esm/models/esm2_t6_8M_UR50D.pt" to /Users/jingyuan/Documents/ChatGPT/模型构建/reproduction/cache/torch/hub/checkpoints/esm2_t6_8M_UR50D.pt
+Downloading: "https://dl.fbaipublicfiles.com/fair-esm/regression/esm2_t6_8M_UR50D-contact-regression.pt" to /Users/jingyuan/Documents/ChatGPT/模型构建/reproduction/cache/torch/hub/checkpoints/esm2_t6_8M_UR50D-contact-regression.pt
+ESM 32/420
+ESM 64/420
+ESM 96/420
+ESM 128/420
+ESM 160/420
+ESM 192/420
+ESM 224/420
+ESM 256/420
+ESM 288/420
+ESM 320/420
+ESM 352/420
+ESM 384/420
+ESM 416/420
+ESM 420/420
+{'shape': (420, 320), 'dtype': 'float32', 'mean_cosine': 0.9999999999992677, 'median_cosine': 0.9999999999993984, 'minimum_cosine': 0.9999999999945851, 'mean_MAE': 3.2831077883273516e-07, 'maximum_absolute_difference': 3.7847042465219416e-06, 'checkpoint': 'esm2_t6_8M_UR50D', 'layer': 6, 'pooling': 'residue mean, exclude BOS/EOS/padding', 'device': 'cpu', 'batch_size': 32, 'author_batch_size': 'all sequences in one batch', 'normalization': 'none', 'eval': True, 'no_grad': True, 'cache_sequence_order_verified': True}

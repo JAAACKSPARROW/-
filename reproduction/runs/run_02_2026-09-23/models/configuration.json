@@ -1,0 +1,31 @@
+{
+  "training_data": "author published cleaned 339 rows",
+  "artifact_role": "refit all cleaned data for prediction; not used for reported held-out metrics",
+  "parameters": {
+    "C": 30,
+    "break_ties": false,
+    "cache_size": 200,
+    "class_weight": null,
+    "coef0": 0.0,
+    "decision_function_shape": "ovr",
+    "degree": 5,
+    "gamma": "scale",
+    "kernel": "poly",
+    "max_iter": -1,
+    "probability": false,
+    "random_state": null,
+    "shrinking": true,
+    "tol": 1e-05,
+    "verbose": false
+  },
+  "checkpoint": "esm2_t6_8M_UR50D",
+  "layer": 6,
+  "pooling": "residue mean excluding BOS/EOS",
+  "scaler": null,
+  "label_mapping": {
+    "0": "random comparator / predicted negative",
+    "1": "potential anti-skin-aging peptide"
+  },
+  "output_score": "decision_function score, not probability",
+  "feature_dimension": 320
+}

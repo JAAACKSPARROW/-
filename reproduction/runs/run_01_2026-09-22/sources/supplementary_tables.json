@@ -1,0 +1,221 @@
+[
+  [
+    [
+      "Name"
+    ],
+    [
+      "chymotrypsin(A)",
+      "ficin",
+      "subtilisin",
+      "oligopeptidase B",
+      "proteinase P1(lactocepin)"
+    ],
+    [
+      "trypsin",
+      "chymotrypsin C",
+      "leukocyte elastase",
+      "calpain 2",
+      "glutamyl endopeptidase II"
+    ],
+    [
+      "pepsin",
+      "plasmin",
+      "metridin",
+      "glycyl endopeptidase",
+      "ginger protease(zingipain)"
+    ],
+    [
+      "Proteinase K",
+      "cathepsin",
+      "thrombin",
+      "oligopeptidase F",
+      "V-8 protease(Glutamyl endopeptidase) pH=7.8"
+    ],
+    [
+      "pancreatic elastase",
+      "clostripain",
+      "coccolysin",
+      "Xaa-Pro dipetidase",
+      "V-8 protease(Glutamyl endopeptidase) pH=4"
+    ],
+    [
+      "prolyl oligopeptidase",
+      "chymase",
+      "Stem bromelain",
+      "pepsin",
+      ""
+    ],
+    [
+      "thermolysin",
+      "papain",
+      "chymosin",
+      "pancreatic elastase II",
+      ""
+    ]
+  ],
+  [
+    [
+      "Model",
+      "Hyperparameters",
+      "BACC",
+      "Recall",
+      "Precision",
+      "MCC"
+    ],
+    [
+      "LR",
+      "{C=1, class_weight='balanced', max_iter=5000, solver='saga'}",
+      "0.903±0.090",
+      "0.896±0.138",
+      "0.922±0.104",
+      "0.822±0.172"
+    ],
+    [
+      "RF",
+      "{'max_depth': 4, 'max_features': 'sqrt', 'n_estimators': 160}",
+      "0.940±0.026",
+      "0.917±0.043",
+      "0.965±0.020",
+      "0.878±0.052"
+    ],
+    [
+      "KNN",
+      "{'algorithm': 'auto', 'leaf_size': 10, 'n_neighbors': 3, 'weights': 'uniform'}",
+      "0.903±0.306",
+      "0.900±0.043",
+      "0.911±0.042",
+      "0.806±0.074"
+    ],
+    [
+      "SVM",
+      "{'C': 10, 'degree': 1, 'kernel': 'poly', 'tol': 1e-05}",
+      "0.963±0.022",
+      "0.976±0.024",
+      "0.951±0.030",
+      "0.927±0.044"
+    ],
+    [
+      "LGBM",
+      "{boosting='gbdt', learning_rate=0.5, n_estimators=40,objective='binary', reg_lambda=0}",
+      "0.942±0.018",
+      "0.937±0.026",
+      "0.947±0.031",
+      "0.883±0.034"
+    ],
+    [
+      "RNN",
+      "Described in the paper",
+      "0.964±0.016",
+      "0.960±0.037",
+      "0.960±0.039",
+      "0.924±0.029"
+    ]
+  ],
+  [
+    [
+      "Amino acids",
+      "Database %",
+      "Screened peptides %"
+    ],
+    [
+      "A",
+      "5.34",
+      "12.02"
+    ],
+    [
+      "C",
+      "2.16",
+      "0.48"
+    ],
+    [
+      "D",
+      "3.08",
+      "4.81"
+    ],
+    [
+      "E",
+      "5.83",
+      "8.17"
+    ],
+    [
+      "F",
+      "2.81",
+      "0.96"
+    ],
+    [
+      "G",
+      "10.69",
+      "33.65"
+    ],
+    [
+      "H",
+      "2.86",
+      "1.92"
+    ],
+    [
+      "I",
+      "2.7",
+      "0"
+    ],
+    [
+      "K",
+      "8.8",
+      "8.17"
+    ],
+    [
+      "L",
+      "7.18",
+      "1.44"
+    ],
+    [
+      "M",
+      "3.13",
+      "1.92"
+    ],
+    [
+      "N",
+      "2.86",
+      "2.88"
+    ],
+    [
+      "P",
+      "9.12",
+      "7.21"
+    ],
+    [
+      "Q",
+      "5.99",
+      "0"
+    ],
+    [
+      "R",
+      "8.58",
+      "6.25"
+    ],
+    [
+      "S",
+      "5.4",
+      "0.48"
+    ],
+    [
+      "T",
+      "4.75",
+      "4.81"
+    ],
+    [
+      "V",
+      "3.89",
+      "3.37"
+    ],
+    [
+      "W",
+      "2.43",
+      "0.96"
+    ],
+    [
+      "Y",
+      "2.43",
+      "0.48"
+    ]
+  ]
+]

@@ -1,0 +1,6 @@
+model,run1_parameters,run2_parameters,parameters_equal,run1_cv_accuracy,run2_cv_accuracy,run1_grid_seconds,run2_grid_seconds
+LR,"{""C"": 6}","{""C"": 6}",True,0.9445767195767196,0.9445767195767196,0.40548479100016266,0.41616345800139243
+RF,"{""max_depth"": 5, ""max_features"": ""log2"", ""n_estimators"": 320}","{""max_depth"": 4, ""max_features"": ""sqrt"", ""n_estimators"": 480}",False,0.941005291005291,0.940873015873016,132.19423695899968,120.39642541600188
+KNN,"{""algorithm"": ""auto"", ""leaf_size"": 10, ""n_neighbors"": 2, ""weights"": ""distance""}","{""algorithm"": ""auto"", ""leaf_size"": 10, ""n_neighbors"": 2, ""weights"": ""distance""}",True,0.9223544973544973,0.9223544973544973,34.030887417000486,38.06460954100476
+SVM,"{""C"": 30, ""degree"": 5, ""kernel"": ""poly"", ""tol"": 1e-05}","{""C"": 30, ""degree"": 5, ""kernel"": ""poly"", ""tol"": 1e-05}",True,0.951984126984127,0.951984126984127,3.073217334000219,3.3033849999992526
+LightGBM,"{""learning_rate"": 1, ""max_depth"": -1, ""n_estimators"": 40, ""reg_lambda"": 0}","{""learning_rate"": 1, ""max_depth"": -1, ""n_estimators"": 40, ""reg_lambda"": 0}",True,0.9521164021164022,0.9521164021164022,14.222182540999711,15.691204458002176

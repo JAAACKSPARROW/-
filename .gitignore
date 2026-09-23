@@ -15,3 +15,5 @@ reproduction/logs/git_final_state.txt
 
 # Original Git history archive remains local; excluded from public publication.
 reproduction/provenance/*.bundle
+reproduction/runs/**/cache/
+reproduction/runs/**/logs/jupyter_runtime/

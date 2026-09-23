@@ -1,0 +1,26 @@
+START data_audit
+DONE: data_audit; see logs/pipeline_data_audit.log
+START original_notebooks
+DONE: original_notebooks; see logs/pipeline_original_notebooks.log
+START path_repaired_notebooks
+DONE: path_repaired_notebooks; see logs/pipeline_path_repaired_notebooks.log
+START embeddings
+DONE: embeddings; see logs/pipeline_embeddings.log
+START cleanlab
+DONE: cleanlab; see logs/pipeline_cleanlab.log
+START cleanlab_sensitivity
+DONE: cleanlab_sensitivity; see logs/pipeline_cleanlab_sensitivity.log
+START models
+DONE: models; see logs/pipeline_models.log
+START svm_experiments
+DONE: svm_experiments; see logs/pipeline_svm_experiments.log
+START paper_parameters
+DONE: paper_parameters; see logs/pipeline_paper_parameters.log
+START lstm
+DONE: lstm; see logs/pipeline_lstm.log
+START leakage
+DONE: leakage; see logs/pipeline_leakage.log
+START report
+DONE: report; see logs/pipeline_report.log
+START verification
+DONE: verification; see logs/pipeline_verification.log

@@ -1,0 +1,637 @@
+
+### CELL 0 code
+import pandas as pd
+X_new = pd.read_csv('embedding_results/X_320_clean_LR.csv', delimiter=',',header = None,index_col= 0, skiprows=1)
+#X_out = pd.read_csv('generalization_data/X_test_nr_320.csv',delimiter=',',header = None,index_col= 0, skiprows=1)
+#X_out_Sequence = pd.read_csv('generalization_data/X_test_nr.csv',delimiter=',',header = None,index_col= 0, dtype={0: int},skiprows=1)
+# load numpy array from csv file
+from numpy import loadtxt
+import numpy as np
+# load array
+y_new = loadtxt('embedding_results/y_after_clean.csv', delimiter=',')
+
+
+
+OUTPUT:
+D:\py\anaconda3\envs\tf2.6\lib\site-packages\numpy\_distributor_init.py:30: UserWarning: loaded more than 1 DLL from .libs:
+D:\py\anaconda3\envs\tf2.6\lib\site-packages\numpy\.libs\libopenblas.GK7GX5KEQ4F6UYO3P26ULGBQYHGQO7J4.gfortran-win_amd64.dll
+D:\py\anaconda3\envs\tf2.6\lib\site-packages\numpy\.libs\libopenblas.WCDJNK7YVMPZQ2ME2ZZHJJRJ3JIKNDB7.gfortran-win_amd64.dll
+  warnings.warn("loaded more than 1 DLL from .libs:"
+
+
+### CELL 1 code
+X_new.head()
+
+OUTPUT:
+        1         2         3         4         5         6         7    \
+0                                                                         
+0  0.255365 -0.110151  0.420514  0.062536  0.039559 -0.261965 -0.188203   
+1  0.114225 -0.307164  0.206607  0.071511 -0.145883 -0.073672 -0.435139   
+2  0.075897 -0.216944  0.292110  0.066782  0.027772 -0.078202 -0.212051   
+3  0.094035 -0.320119  0.130155  0.186146  0.160770 -0.172723 -0.348061   
+4  0.051533 -0.225279  0.325600  0.240966  0.079145 -0.131313 -0.217174   
+
+        8         9         10   ...       311       312       313       314  \
+0                                ...                                           
+0 -0.147991 -0.152210 -0.135877  ... -0.059404  0.277946  0.089026  0.001824   
+1 -0.150680 -0.295002 -0.196029  ...  0.108680 -0.066242  0.282274 -0.012667   
+2 -0.028331 -0.317350 -0.000309  ...  0.068856  0.003082  0.265174  0.040082   
+3 -0.041199 -0.373909 -0.087051  ... -0.018430  0.019292  0.320167  0.102368   
+4 -0.078186 -0.151751 -0.151602  ...  0.047536 -0.028692  0.129324 -0.141799   
+
+        315       316       317       318       319       320  
+0                                                              
+0  0.172684  0.084983  0.138145 -0.035588  0.165212  0.016821  
+1 -0.119766  0.145923 -0.217823  0.227893  0.059439 -0.109263  
+2 -0.089901  0.108999  0.000228  0.181487  0.183633  0.016567  
+3 -0.231401  0.220986  0.189016  0.288416  0.232256 -0.003443  
+4 -0.049260 -0.030645  0.052848  0.039807  0.273189 -0.020151  
+
+[5 rows x 320 columns]
+
+### CELL 2 code
+import statistics
+from sklearn.metrics import balanced_accuracy_score
+from self_function import evaluation as eva
+
+
+### CELL 3 code
+# dataset splitting 
+from sklearn.model_selection import train_test_split
+X_train_whole, X_ind_test, y_train_whole, y_ind_test =  train_test_split(X_new, y_new, test_size=0.2, random_state=2001)
+
+
+### CELL 4 code
+# logistic regresion without penality and solver
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import GridSearchCV
+clf = LogisticRegression(max_iter = 5000)
+param_grid = {'C':[0.5,1,1.5,2,2.5,4,6,8,13,14,15,16,20,30,40, 50,60,70, 80, 90 ,100,125, 500, 1000,2000,4000,10000]}
+grid_search = GridSearchCV(clf,param_grid,cv=10,n_jobs=-1)
+grid_search.fit(X_train_whole,y_train_whole)
+best_model_reg = grid_search.best_estimator_
+y_pred = best_model_reg.predict(X_out)
+#model performance evaluation:BACC & recall & accuracy & MCC & f1 score& roc_auc
+
+evaluation = eva(best_model_reg,X_new,y_new)
+print(evaluation)
+
+#print the model's parameters and validation score
+print("About model development")
+print("Best Parameters:{}".format(grid_search.best_params_))
+print("Best cross_validation socre:{:.3f}".format(grid_search.best_score_))
+print("Test set score:{:.2f}".format(grid_search.score(X_ind_test,y_ind_test)))
+print("Best_estimator:\n{}".format(grid_search.best_estimator_))
+
+# get the probability of class 1
+y_pred_prob = best_model_reg.predict_proba(X_out)[:, 1]
+
+# 根据排序后的索引获取预测结果和概率
+sorted_indices = np.argsort(y_pred_prob)[::-1]
+sorted_y_pred = y_pred[sorted_indices]
+sorted_prob = y_pred_prob[sorted_indices]
+
+sorted_sequence = X_out_Sequence.iloc[sorted_indices]
+
+# 将预测结果为0的序列移到最后
+zero_indices = np.where(sorted_y_pred == 0)[0]
+non_zero_indices = np.where(sorted_y_pred != 0)[0]
+sorted_sequence = pd.concat([sorted_sequence.iloc[non_zero_indices], sorted_sequence.iloc[zero_indices]])
+sorted_y_pred = np.concatenate((sorted_y_pred[non_zero_indices], sorted_y_pred[zero_indices]))
+sorted_prob = np.concatenate((sorted_prob[non_zero_indices], sorted_prob[zero_indices]))
+
+# 输出结果
+output = np.column_stack((sorted_sequence, sorted_y_pred, sorted_prob))
+
+print("Sorted Sequence, Predictions, and Probabilities:")
+for item in output:
+    if item[2] == 0:
+        print(item[0], item[1], item[2],'-')
+    else:
+        print(item[0], item[1], item[2],item[3])
+
+
+
+OUTPUT:
+BACC =  0.943 ± 0.019
+Recall =  0.927 ± 0.035
+Precision =  0.926 ± 0.034
+MCC =  0.886 ± 0.036
+F1 score =  0.926 ± 0.023
+ROC_AUC =  0.991 ± 0.004
+LogisticRegression(C=8, max_iter=5000)
+About model development
+Best Parameters:{'C': 8}
+Best cross_validation socre:0.946
+Test set score:0.99
+Best_estimator:
+LogisticRegression(C=8, max_iter=5000)
+Sorted Sequence, Predictions, and Probabilities:
+VHH 1 1.0 0.9999999012515552
+LLPHHADADY 1 1.0 0.9999799114794801
+HLPLP 0 1.0 0.9998916539560257
+VNPHDHQN 1 1.0 0.9985752878366545
+LVNPHDHQN 1 1.0 0.9972415132727104
+LQSGDALRVPSGTTYY 1 1.0 0.9859631602295487
+VHHANEN 1 1.0 0.9763854332552752
+AHK 1 1.0 0.968172573483699
+VLPIPQ 0 0.0 -
+PLAQPA 0 0.0 -
+SVPQPK 0 0.0 -
+LLNPT 0 0.0 -
+EVPKA 0 0.0 -
+VVKL 1 0.0 -
+FSL 0 0.0 -
+IVF 0 0.0 -
+
+
+### CELL 5 code
+#random forest
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import GridSearchCV
+clf = RandomForestClassifier(n_jobs=-1)
+param_grid = {'n_estimators': [80, 160, 320, 480, 640, 1280,2000],
+            'max_depth': [1, 2, 3, 4,5],
+            'max_features' :['log2', 'sqrt']}
+grid_search = GridSearchCV(clf,param_grid,cv=10,n_jobs=-1)
+grid_search.fit(X_train_whole,y_train_whole)
+best_model_reg = grid_search.best_estimator_
+#y_pred = best_model_reg.predict(X_out)
+#评价 准确率 recall 精确率 rocauc f1 mcc
+
+evaluation = eva(best_model_reg,X_new,y_new)
+print(evaluation)
+
+#print the model's parameters and validation score
+print("About model development")
+print("Best Parameters:{}".format(grid_search.best_params_))
+print("Best cross_validation socre:{:.3f}".format(grid_search.best_score_))
+print("Test set score:{:.2f}".format(grid_search.score(X_ind_test,y_ind_test)))
+print("Best_estimator:\n{}".format(grid_search.best_estimator_))
+
+
+OUTPUT:
+BACC =  0.755 ± 0.035
+Recall =  0.738 ± 0.07
+Precision =  0.71 ± 0.063
+MCC =  0.508 ± 0.068
+F1 score =  0.72 ± 0.044
+ROC_AUC =  0.849 ± 0.041
+RandomForestClassifier(max_depth=4, max_features='log2', n_estimators=320,
+                       n_jobs=-1)
+About model development
+Best Parameters:{'max_depth': 4, 'max_features': 'log2', 'n_estimators': 320}
+Best cross_validation socre:0.799
+Test set score:0.91
+Best_estimator:
+RandomForestClassifier(max_depth=4, max_features='log2', n_estimators=320,
+                       n_jobs=-1)
+
+
+### CELL 6 code
+# KNN
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.model_selection import GridSearchCV
+clf = KNeighborsClassifier(n_jobs=-1)
+param_grid = {'n_neighbors' : [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43],'weights' : ['uniform', 'distance'],
+              'algorithm' : ['auto', 'ball_tree', 'kd_tree', 'brute'],
+              'leaf_size' : [10, 20, 30, 40, 50, 60, 70, 80]}
+grid_search = GridSearchCV(clf,param_grid,cv=10,n_jobs=-1)
+grid_search.fit(X_train_whole,y_train_whole)
+best_model_reg = grid_search.best_estimator_
+#y_pred = best_model_reg.predict(X_out)
+#评价 准确率 recall 精确率 rocauc f1 mcc
+
+evaluation = eva(best_model_reg,X_new,y_new)
+print(evaluation)
+
+#print the model's parameters and validation score
+print("About model development")
+print("Best Parameters:{}".format(grid_search.best_params_))
+print("Best cross_validation socre:{:.3f}".format(grid_search.best_score_))
+print("Test set score:{:.2f}".format(grid_search.score(X_ind_test,y_ind_test)))
+print("Best_estimator:\n{}".format(grid_search.best_estimator_))
+
+
+
+OUTPUT:
+BACC =  0.759 ± 0.029
+Recall =  0.704 ± 0.058
+Precision =  0.789 ± 0.052
+MCC =  0.522 ± 0.056
+F1 score =  0.743 ± 0.043
+ROC_AUC =  0.825 ± 0.049
+KNeighborsClassifier(leaf_size=10, n_jobs=-1, n_neighbors=19,
+                     weights='distance')
+About model development
+Best Parameters:{'algorithm': 'auto', 'leaf_size': 10, 'n_neighbors': 19, 'weights': 'distance'}
+Best cross_validation socre:0.763
+Test set score:0.90
+Best_estimator:
+KNeighborsClassifier(leaf_size=10, n_jobs=-1, n_neighbors=19,
+                     weights='distance')
+
+
+### CELL 7 code
+# SVM
+from sklearn.svm import SVC
+from sklearn.model_selection import GridSearchCV
+clf = SVC()
+param_grid = {'C':[0.001, 0.01, 0.1,  0.5, 1.1, 1.3, 5, 10, 30, 50, 100, 300],'kernel':['linear', 'poly', 'rbf', 'sigmoid'],
+              'degree':[1, 3, 5, 7, 9],'tol':[1e-5]}
+grid_search = GridSearchCV(clf,param_grid,cv=10,n_jobs=-1)
+grid_search.fit(X_train_whole,y_train_whole)
+best_model_reg = grid_search.best_estimator_
+#y_pred = best_model_reg.predict(X_out)
+#评价 准确率 recall 精确率 rocauc f1 mcc
+
+evaluation = eva(best_model_reg,X_new,y_new)
+print(evaluation)
+
+#save model
+import pickle
+
+
+#print the model's parameters and validation score
+print("About model development")
+print("Best Parameters:{}".format(grid_search.best_params_))
+print("Best cross_validation socre:{:.3f}".format(grid_search.best_score_))
+print("Test set score:{:.2f}".format(grid_search.score(X_ind_test,y_ind_test)))
+print("Best_estimator:\n{}".format(grid_search.best_estimator_))
+
+
+
+OUTPUT:
+BACC =  0.773 ± 0.037
+Recall =  0.734 ± 0.066
+Precision =  0.779 ± 0.04
+MCC =  0.55 ± 0.072
+F1 score =  0.755 ± 0.049
+ROC_AUC =  0.867 ± 0.038
+SVC(C=30, degree=1, tol=1e-05)
+About model development
+Best Parameters:{'C': 30, 'degree': 1, 'kernel': 'rbf', 'tol': 1e-05}
+Best cross_validation socre:0.813
+Test set score:0.88
+Best_estimator:
+SVC(C=30, degree=1, tol=1e-05)
+
+
+### CELL 8 code
+# LightGBM
+import lightgbm as lgb
+import itertools
+from sklearn.model_selection import GridSearchCV
+
+
+clf = lgb.LGBMClassifier(boosting='gbdt', objective='binary',n_jobs=-1,verbose = -1)
+param_grid = {'learning_rate':[0.001,0.01,0.1,0.2,0.5,1],
+              'n_estimators':[40,80,160,320,640],
+              'max_depth':[-1],
+              'reg_lambda':[0]}
+grid_search = GridSearchCV(clf,param_grid,cv=10,n_jobs=-1)
+grid_search.fit(X_train_whole,y_train_whole)
+best_model_reg = grid_search.best_estimator_
+#y_pred = best_model_reg.predict(X_out)
+
+
+#print the model's parameters and validation score
+print("About model development")
+print("Best Parameters:{}".format(grid_search.best_params_))
+print("Best cross_validation socre:{:.3f}".format(grid_search.best_score_))
+print("Test set score:{:.2f}".format(grid_search.score(X_ind_test,y_ind_test)))
+print("Best_estimator:\n{}".format(grid_search.best_estimator_))
+
+#model performance evaluation:BACC & recall & accuracy & MCC & f1 score& roc_auc
+evaluation = eva(best_model_reg,X_new,y_new)
+print(evaluation)
+
+
+
+
+OUTPUT:
+About model development
+Best Parameters:{'learning_rate': 0.1, 'max_depth': -1, 'n_estimators': 160, 'reg_lambda': 0}
+Best cross_validation socre:0.825
+Test set score:0.81
+Best_estimator:
+LGBMClassifier(boosting='gbdt', n_estimators=160, n_jobs=-1, objective='binary',
+               reg_lambda=0, verbose=-1)
+BACC =  0.786 ± 0.033
+Recall =  0.765 ± 0.056
+Precision =  0.759 ± 0.034
+MCC =  0.572 ± 0.065
+F1 score =  0.762 ± 0.042
+ROC_AUC =  0.868 ± 0.032
+LGBMClassifier(boosting='gbdt', n_estimators=160, n_jobs=-1, objective='binary',
+               reg_lambda=0, verbose=-1)
+
+
+### CELL 9 markdown
+## DeepLearning深度学习
+
+
+### CELL 10 code
+#get data
+import numpy as np
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from keras.models import Sequential
+from keras.layers import Conv1D, MaxPooling1D, Flatten, Dense,BatchNormalization,Dropout
+from numpy import loadtxt
+from sklearn.metrics import classification_report, roc_auc_score, matthews_corrcoef
+import keras
+
+# 读取数据
+data = X_new
+# 将数据分为特征和标签
+X = data.iloc[:, 0:].values
+print(X.shape)
+y = y_new
+print(y.shape)
+
+
+OUTPUT:
+(343, 320)
+(343,)
+
+
+### CELL 11 code
+#RNN
+import numpy as np
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import classification_report, roc_auc_score, matthews_corrcoef
+from keras.models import Sequential
+from keras.layers import LSTM, Dense
+from tensorflow.keras.optimizers import SGD
+
+
+
+# 数据预处理
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+X_train = X_train.reshape(X_train.shape[0], 1, X_train.shape[1])
+X_test = X_test.reshape(X_test.shape[0], 1, X_test.shape[1])
+input_shape = (1, X_train.shape[2])
+
+# 构建RNN模型
+model = Sequential()
+model = Sequential()
+model.add(LSTM(128, input_shape=input_shape, return_sequences=True))
+model.add(LSTM(64, return_sequences=True))
+model.add(LSTM(32,return_sequences = True))
+model.add(Dense(64, activation='relu'))
+model.add(Dropout(0.15))
+model.add(Dense(10, activation='relu'))
+model.add(Dropout(0.15))
+model.add(Dense(1, activation='sigmoid'))
+
+
+
+# 编译模型
+model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['binary_accuracy'])
+
+# 训练模型
+model.fit(X_train, y_train, epochs=100, batch_size=32, verbose=1)
+
+# 在测试集上评估模型
+y_pred = model.predict(X_test)
+y_pred_proba = y_pred.flatten()
+y_pred_binary = np.round(y_pred_proba)
+
+print("Classification Report:")
+print(classification_report(y_test, y_pred_binary))
+
+roc_auc = roc_auc_score(y_test, y_pred_proba)
+print("ROC AUC:", roc_auc)
+
+mcc = matthews_corrcoef(y_test, y_pred_binary)
+print("MCC:", mcc)
+
+
+
+
+
+OUTPUT:
+Epoch 1/100
+9/9 [==============================] - 8s 19ms/step - loss: 0.6928 - binary_accuracy: 0.5292
+Epoch 2/100
+9/9 [==============================] - 0s 13ms/step - loss: 0.6918 - binary_accuracy: 0.5328
+Epoch 3/100
+9/9 [==============================] - 0s 14ms/step - loss: 0.6866 - binary_accuracy: 0.5328
+Epoch 4/100
+9/9 [==============================] - 0s 9ms/step - loss: 0.6740 - binary_accuracy: 0.5328
+Epoch 5/100
+9/9 [==============================] - 0s 9ms/step - loss: 0.6359 - binary_accuracy: 0.5328
+Epoch 6/100
+9/9 [==============================] - 0s 9ms/step - loss: 0.5781 - binary_accuracy: 0.6606
+Epoch 7/100
+9/9 [==============================] - 0s 8ms/step - loss: 0.5399 - binary_accuracy: 0.7555
+Epoch 8/100
+9/9 [==============================] - 0s 8ms/step - loss: 0.4969 - binary_accuracy: 0.7883
+Epoch 9/100
+9/9 [==============================] - 0s 8ms/step - loss: 0.4767 - binary_accuracy: 0.8175
+Epoch 10/100
+9/9 [==============================] - 0s 6ms/step - loss: 0.4466 - binary_accuracy: 0.8029
+Epoch 11/100
+9/9 [==============================] - 0s 6ms/step - loss: 0.4476 - binary_accuracy: 0.8066
+Epoch 12/100
+9/9 [==============================] - 0s 6ms/step - loss: 0.5011 - binary_accuracy: 0.7591
+Epoch 13/100
+9/9 [==============================] - 0s 6ms/step - loss: 0.4246 - binary_accuracy: 0.8102
+Epoch 14/100
+9/9 [==============================] - 0s 7ms/step - loss: 0.4194 - binary_accuracy: 0.8102
+Epoch 15/100
+9/9 [==============================] - 0s 6ms/step - loss: 0.4041 - binary_accuracy: 0.8467
+Epoch 16/100
+9/9 [==============================] - 0s 6ms/step - loss: 0.3764 - binary_accuracy: 0.8540
+Epoch 17/100
+9/9 [==============================] - 0s 7ms/step - loss: 0.3727 - binary_accuracy: 0.8577
+Epoch 18/100
+9/9 [==============================] - 0s 7ms/step - loss: 0.4061 - binary_accuracy: 0.8467
+Epoch 19/100
+9/9 [==============================] - 0s 8ms/step - loss: 0.3690 - binary_accuracy: 0.8504
+Epoch 20/100
+9/9 [==============================] - 0s 7ms/step - loss: 0.3379 - binary_accuracy: 0.8650
+Epoch 21/100
+9/9 [==============================] - 0s 8ms/step - loss: 0.3415 - binary_accuracy: 0.8686
+Epoch 22/100
+9/9 [==============================] - 0s 7ms/step - loss: 0.3145 - binary_accuracy: 0.8796
+Epoch 23/100
+9/9 [==============================] - 0s 8ms/step - loss: 0.3425 - binary_accuracy: 0.8577
+Epoch 24/100
+9/9 [==============================] - 0s 8ms/step - loss: 0.3977 - binary_accuracy: 0.8285
+Epoch 25/100
+9/9 [==============================] - 0s 8ms/step - loss: 0.3334 - binary_accuracy: 0.8686
+Epoch 26/100
+9/9 [==============================] - 0s 9ms/step - loss: 0.3038 - binary_accuracy: 0.8905
+Epoch 27/100
+9/9 [==============================] - 0s 9ms/step - loss: 0.3621 - binary_accuracy: 0.8613
+Epoch 28/100
+9/9 [==============================] - 0s 8ms/step - loss: 0.3016 - binary_accuracy: 0.8869
+Epoch 29/100
+9/9 [==============================] - 0s 8ms/step - loss: 0.2791 - binary_accuracy: 0.8978
+Epoch 30/100
+9/9 [==============================] - 0s 8ms/step - loss: 0.2908 - binary_accuracy: 0.8832
+Epoch 31/100
+9/9 [==============================] - 0s 8ms/step - loss: 0.2874 - binary_accuracy: 0.8832
+Epoch 32/100
+9/9 [==============================] - 0s 6ms/step - loss: 0.2823 - binary_accuracy: 0.9015
+Epoch 33/100
+9/9 [==============================] - 0s 8ms/step - loss: 0.2671 - binary_accuracy: 0.9051
+Epoch 34/100
+9/9 [==============================] - 0s 12ms/step - loss: 0.2870 - binary_accuracy: 0.9015
+Epoch 35/100
+9/9 [==============================] - 0s 12ms/step - loss: 0.2627 - binary_accuracy: 0.9015
+Epoch 36/100
+9/9 [==============================] - 0s 6ms/step - loss: 0.2560 - binary_accuracy: 0.9197
+Epoch 37/100
+9/9 [==============================] - 0s 7ms/step - loss: 0.2365 - binary_accuracy: 0.9234
+Epoch 38/100
+9/9 [==============================] - 0s 6ms/step - loss: 0.2643 - binary_accuracy: 0.9015
+Epoch 39/100
+9/9 [==============================] - 0s 6ms/step - loss: 0.2158 - binary_accuracy: 0.9270
+Epoch 40/100
+9/9 [==============================] - 0s 7ms/step - loss: 0.2268 - binary_accuracy: 0.9197
+Epoch 41/100
+9/9 [==============================] - 0s 7ms/step - loss: 0.2699 - binary_accuracy: 0.9015
+Epoch 42/100
+9/9 [==============================] - 0s 8ms/step - loss: 0.2351 - binary_accuracy: 0.9161
+Epoch 43/100
+9/9 [==============================] - 0s 8ms/step - loss: 0.2180 - binary_accuracy: 0.9307
+Epoch 44/100
+9/9 [==============================] - 0s 7ms/step - loss: 0.1924 - binary_accuracy: 0.9343
+Epoch 45/100
+9/9 [==============================] - 0s 6ms/step - loss: 0.2159 - binary_accuracy: 0.9380
+Epoch 46/100
+9/9 [==============================] - 0s 8ms/step - loss: 0.2539 - binary_accuracy: 0.8942
+Epoch 47/100
+9/9 [==============================] - 0s 8ms/step - loss: 0.2260 - binary_accuracy: 0.9307
+Epoch 48/100
+9/9 [==============================] - 0s 7ms/step - loss: 0.2270 - binary_accuracy: 0.9197
+Epoch 49/100
+9/9 [==============================] - 0s 8ms/step - loss: 0.2002 - binary_accuracy: 0.9270
+Epoch 50/100
+9/9 [==============================] - 0s 10ms/step - loss: 0.1960 - binary_accuracy: 0.9416
+Epoch 51/100
+9/9 [==============================] - 0s 6ms/step - loss: 0.1897 - binary_accuracy: 0.9343
+Epoch 52/100
+9/9 [==============================] - 0s 7ms/step - loss: 0.1878 - binary_accuracy: 0.9380
+Epoch 53/100
+9/9 [==============================] - 0s 6ms/step - loss: 0.1589 - binary_accuracy: 0.9380
+Epoch 54/100
+9/9 [==============================] - 0s 7ms/step - loss: 0.1648 - binary_accuracy: 0.9416
+Epoch 55/100
+9/9 [==============================] - 0s 7ms/step - loss: 0.1588 - binary_accuracy: 0.9453
+Epoch 56/100
+9/9 [==============================] - 0s 6ms/step - loss: 0.1733 - binary_accuracy: 0.9343
+Epoch 57/100
+9/9 [==============================] - 0s 6ms/step - loss: 0.1566 - binary_accuracy: 0.9416
+Epoch 58/100
+9/9 [==============================] - 0s 7ms/step - loss: 0.1420 - binary_accuracy: 0.9453
+Epoch 59/100
+9/9 [==============================] - 0s 7ms/step - loss: 0.1420 - binary_accuracy: 0.9453
+Epoch 60/100
+9/9 [==============================] - 0s 8ms/step - loss: 0.1318 - binary_accuracy: 0.9489
+Epoch 61/100
+9/9 [==============================] - 0s 7ms/step - loss: 0.1767 - binary_accuracy: 0.9307
+Epoch 62/100
+9/9 [==============================] - 0s 8ms/step - loss: 0.4038 - binary_accuracy: 0.8796
+Epoch 63/100
+9/9 [==============================] - 0s 8ms/step - loss: 0.2585 - binary_accuracy: 0.9124
+Epoch 64/100
+9/9 [==============================] - 0s 9ms/step - loss: 0.2005 - binary_accuracy: 0.9270
+Epoch 65/100
+9/9 [==============================] - 0s 7ms/step - loss: 0.1928 - binary_accuracy: 0.9234
+Epoch 66/100
+9/9 [==============================] - 0s 6ms/step - loss: 0.1597 - binary_accuracy: 0.9343
+Epoch 67/100
+9/9 [==============================] - 0s 7ms/step - loss: 0.1493 - binary_accuracy: 0.9416
+Epoch 68/100
+9/9 [==============================] - 0s 8ms/step - loss: 0.1550 - binary_accuracy: 0.9416
+Epoch 69/100
+9/9 [==============================] - 0s 8ms/step - loss: 0.1584 - binary_accuracy: 0.9270
+Epoch 70/100
+9/9 [==============================] - 0s 8ms/step - loss: 0.1331 - binary_accuracy: 0.9380
+Epoch 71/100
+9/9 [==============================] - 0s 8ms/step - loss: 0.1250 - binary_accuracy: 0.9453
+Epoch 72/100
+9/9 [==============================] - 0s 8ms/step - loss: 0.1160 - binary_accuracy: 0.9453
+Epoch 73/100
+9/9 [==============================] - 0s 7ms/step - loss: 0.1051 - binary_accuracy: 0.9489
+Epoch 74/100
+9/9 [==============================] - 0s 7ms/step - loss: 0.1177 - binary_accuracy: 0.9489
+Epoch 75/100
+9/9 [==============================] - 0s 8ms/step - loss: 0.1184 - binary_accuracy: 0.9562
+Epoch 76/100
+9/9 [==============================] - 0s 8ms/step - loss: 0.1265 - binary_accuracy: 0.9562
+Epoch 77/100
+9/9 [==============================] - 0s 8ms/step - loss: 0.1068 - binary_accuracy: 0.9453
+Epoch 78/100
+9/9 [==============================] - 0s 7ms/step - loss: 0.0910 - binary_accuracy: 0.9599
+Epoch 79/100
+
+OUTPUT:
+9/9 [==============================] - 0s 9ms/step - loss: 0.0869 - binary_accuracy: 0.9635
+Epoch 80/100
+9/9 [==============================] - 0s 8ms/step - loss: 0.1063 - binary_accuracy: 0.9562
+Epoch 81/100
+9/9 [==============================] - 0s 7ms/step - loss: 0.0906 - binary_accuracy: 0.9599
+Epoch 82/100
+9/9 [==============================] - 0s 7ms/step - loss: 0.1050 - binary_accuracy: 0.9708
+Epoch 83/100
+9/9 [==============================] - 0s 9ms/step - loss: 0.1381 - binary_accuracy: 0.9526
+Epoch 84/100
+9/9 [==============================] - 0s 10ms/step - loss: 0.1345 - binary_accuracy: 0.9453
+Epoch 85/100
+9/9 [==============================] - 0s 8ms/step - loss: 0.1295 - binary_accuracy: 0.9599
+Epoch 86/100
+9/9 [==============================] - 0s 7ms/step - loss: 0.1803 - binary_accuracy: 0.9453
+Epoch 87/100
+9/9 [==============================] - 0s 7ms/step - loss: 0.1020 - binary_accuracy: 0.9672
+Epoch 88/100
+9/9 [==============================] - 0s 8ms/step - loss: 0.0938 - binary_accuracy: 0.9781
+Epoch 89/100
+9/9 [==============================] - 0s 8ms/step - loss: 0.1034 - binary_accuracy: 0.9745
+Epoch 90/100
+9/9 [==============================] - 0s 8ms/step - loss: 0.0888 - binary_accuracy: 0.9781
+Epoch 91/100
+9/9 [==============================] - 0s 9ms/step - loss: 0.0789 - binary_accuracy: 0.9781
+Epoch 92/100
+9/9 [==============================] - 0s 9ms/step - loss: 0.0743 - binary_accuracy: 0.9854
+Epoch 93/100
+9/9 [==============================] - 0s 8ms/step - loss: 0.0551 - binary_accuracy: 0.9891
+Epoch 94/100
+9/9 [==============================] - 0s 8ms/step - loss: 0.0663 - binary_accuracy: 0.9818
+Epoch 95/100
+9/9 [==============================] - 0s 9ms/step - loss: 0.0505 - binary_accuracy: 0.9891
+Epoch 96/100
+9/9 [==============================] - 0s 8ms/step - loss: 0.0615 - binary_accuracy: 0.9891
+Epoch 97/100
+9/9 [==============================] - 0s 9ms/step - loss: 0.0599 - binary_accuracy: 0.9854
+Epoch 98/100
+9/9 [==============================] - 0s 8ms/step - loss: 0.0599 - binary_accuracy: 0.9818
+Epoch 99/100
+9/9 [==============================] - 0s 9ms/step - loss: 0.0476 - binary_accuracy: 0.9891
+Epoch 100/100
+9/9 [==============================] - 0s 7ms/step - loss: 0.0514 - binary_accuracy: 0.9891
+Classification Report:
+              precision    recall  f1-score   support
+
+         0.0       0.63      0.76      0.69        25
+         1.0       0.85      0.75      0.80        44
+
+    accuracy                           0.75        69
+   macro avg       0.74      0.76      0.74        69
+weighted avg       0.77      0.75      0.76        69
+
+ROC AUC: 0.8227272727272728
+MCC: 0.49450830280032865
+
+
+### CELL 12 code
+
+
+
+### CELL 13 code
+

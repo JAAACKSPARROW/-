@@ -1,0 +1,18 @@
+[
+  {
+    "file": "paper.html",
+    "url": "https://link.springer.com/article/10.1186/s42825-025-00215-8",
+    "utc": "2026-09-22T03:06:25.299591+00:00",
+    "sha256": "b68a7da2c8ff8133faa635aa8824db1ffdb44f226e78d6388da6fb4dabb3673a",
+    "bytes": 506453,
+    "status": "downloaded"
+  },
+  {
+    "file": "supplementary.docx",
+    "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1186%2Fs42825-025-00215-8/MediaObjects/42825_2025_215_MOESM1_ESM.docx",
+    "utc": "2026-09-22T03:06:30.169110+00:00",
+    "sha256": "3b528b54cccc5ca9494f36688afa88e089efa76a584e2d74ee549b668289b18d",
+    "bytes": 1313628,
+    "status": "downloaded"
+  }
+]

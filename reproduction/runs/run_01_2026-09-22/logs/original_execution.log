@@ -1,0 +1,4 @@
+/Users/jingyuan/Documents/ChatGPT/模型构建/.venv/lib/python3.12/site-packages/IPython/paths.py:67: UserWarning: IPython parent '/Users/jingyuan/Documents/ChatGPT/模型构建/reproduction/cache' is not a writable location, using a temp directory.
+  warn("IPython parent '{}' is not a writable location,"
+ESM_embedding_task-320.ipynb FAIL
+model_development_320_LR_s0.ipynb FAIL
