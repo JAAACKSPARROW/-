@@ -25,6 +25,8 @@
 
 ## 环境与运行
 
+本项目的计算流程已整理为 [reproduce-peptide-ml skill](skills/reproduce-peptide-ml/SKILL.md)，包含通用复现步骤、本论文专用配置、新运行目录准备工具和逐划分指标对比工具。调用示例：`使用 $reproduce-peptide-ml 独立重跑当前项目，对比两次结果与论文，并生成逐步流程图。` 工具不会覆盖历史实验；skill 本身不包含训练数据、预训练权重或实验环境。
+
 本次实测 macOS arm64、Python 3.12.14，作者记录 Python 3.9。当前锁文件为现代兼容环境，不是作者原环境。建议 Python 3.12 创建隔离环境；不要用缺少 Xcode CLT 时的 macOS `/usr/bin/python3` 占位入口。
 
 ```bash

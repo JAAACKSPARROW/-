@@ -1,0 +1,4 @@
+interface:
+  display_name: "肽序列机器学习论文复现"
+  short_description: "复现肽序列机器学习论文，审计数据与指标，对比重复实验并生成流程图"
+  default_prompt: "使用 $reproduce-peptide-ml 在当前工作区复现肽序列模型，独立重跑并对照论文与作者代码结果，生成逐步流程图和可追溯报告。"
